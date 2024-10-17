@@ -1,5 +1,6 @@
 FROM openjdk:21-jdk
 LABEL authors="jackby03"
+
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:resolve
