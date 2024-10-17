@@ -1,7 +1,5 @@
 FROM openjdk:21-jdk
 LABEL authors="jackby03"
-
-RUN apk --no-cache add curl maven
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:resolve
