@@ -1,8 +1,10 @@
-FROM openjdk:21-jdk
+FROM openjdk:21-jdk-alpine
 LABEL authors="jackd"
 
-COPY . /app
+RUN apk --no-cache add curl maven
 WORKDIR /app
-RUN ./mvnw package
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app/target/user-services-0.0.1-SNAPSHOT.jar"]
+COPY pom.xml .
+RUN mvn dependency:resolve
+COPY src src
+RUN mvn package -DskipTests
+ENTRYPOINT ["java", "-jar", "target/user-services-0.0.1-SNAPSHOT.jar"]
