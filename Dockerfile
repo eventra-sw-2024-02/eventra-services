@@ -1,5 +1,5 @@
-FROM openjdk:21-jdk-alpine
-LABEL authors="jackd"
+FROM openjdk:21-jdk
+LABEL authors="jackby03"
 
 RUN apk --no-cache add curl maven
 WORKDIR /app
